@@ -38,7 +38,24 @@ The builder is able to generate several types of obfuscation, all listed below:
 * <i>Truncation:</i> the last letter of some words is randomly removed.
 
 It is possible to specify the percentage of plagiarized fragments slightly, moderately or heavily obfuscated. 
-The sum of these percentages should be equal to 100. This value is called obfuscation density. It determines the proportion of words in the text that will be affected by the obfuscation. 
+The sum of these percentages should be equal to 100. This value is called obfuscation density. It determines the proportion of words in the text that will be affected by the obfuscation.
+
+## Fragment Extraction & Document Generation
+
+It is possible to generate the documents by specifying the number of the fragments or the length of the fragments. 
+
+* Build by number of fragments:
+Knowing the distribution probability of the number of fragments, a number of fragments is assigned to each document to generate (their lengths are set randomly between min and max). 
+Then, the fragments will be labeled plagiarized or original according to their lengths to match the number of words plagiarized wanted.
+
+* Build by size of the fragments:
+Knowing the percentage of the types of sizes (small, medium or large) of the fragments by document, the number of words and so the proportion of the types of plagiarized fragments according to their size is calculated. 
+Then, number of fragments of each type of size is randomly generated, such that their sum is the calculated and assigned value of the previous step.
+
+For each fragment, depending on it should be plagiarized or original, a contiguous series of sentences as close as the number of words intended for the concerned extraction (i.e. fragment) is extracted from an adequate resource (labeled of the same type and that has not been used too far).
+
+The comments are in French but the names of attributes and methods are in English and still quite self-explanatory ;)
+
 
 ## Output
 
@@ -82,4 +99,8 @@ A sample of the use of the <i>PlagiarizedCorpusBuilder</i> library is in the scr
 ## How does it work ?
 
 <i>Under construction</i>
+
+## Conception
+<p align="center"><img src="https://raw.githubusercontent.com/FerreroJeremy/Plagiarized-Corpus-Generator/master/docs/PlagiarizedCorpusGenerator.png?token=AL6uBo2o7exZBkeeg_cbouFqCYkIbWQJks5YNCVfwA%3D%3D"></p>
+The above diagram was modeled with <a rel="staruml" href="http://staruml.io/">StarUML</a>.
 
