@@ -1,5 +1,5 @@
 # Plagiarized-Corpus-Generator
-This is a corpus builder of documents for the evaluation of plagiarism detection tools.
+This is a builder of a set of documents for the evaluation of plagiarism detection tools.
 
 <i>The comments are in French but the names of attributes and methods are in English and quite self-explanatory.</i>
 
@@ -31,41 +31,43 @@ The specification of the plagiarized files can be done either in the same way as
 
 ### Settings
 
-* The maximum recommended number of times that one file can be used as input resource. The number is just an advised number of times i.e. the builder will always consider as far as possible the limit but if it is forced to transgress this number in order to generate the specified number of documents, it will do it, while minimizing the number of extractions by files.
 * The number of desired output documents. 
-* The length (in number of words) of the output documents. A minimum, maximum and average value is required. The lengths of generated documents will vary between the minimum and maximum value toward the average value.
-* The percentage of plagiarism in the output documents. This is the same as the length mentioned above, a minimum, maximum and average value is required.
-* The distribution of the lengths of the plagiarized fragments of the output documents. The lengths of the non plagiarized fragments are left to the discretion of the builder;
-* The percentage of small plagiarized fragments (between min and max words);
-* The percentage of medium plagiarized fragments (between min and max words);
-* The percentage of long plagiarized fragments (between min and max words).
+* The maximum recommended number of times that one file can be used as input resource. The number is just an advised number of times i.e. the builder will always consider as far as possible the limit but if it is forced to transgress this number in order to generate the specified number of documents, it will do it, while minimizing the number of extractions by files.
+* The length (in number of words) of the output documents. A minimum, maximum and average value is required. The lengths of the generated documents will vary between the minimum and the maximum value toward the average value.
+* The percentage of plagiarism in the output documents. This is the same as the length mentioned above, a minimum, a maximum and an average value is required.
+* The distribution of the lengths of the plagiarized fragments of the output documents. The lengths of the non plagiarized fragments are left to the discretion of the builder:
+  * The percentage of small plagiarized fragments (between min and max words, these extremes can also be specified);
+  * The percentage of medium plagiarized fragments (between min and max words, these extremes can also be specified);
+  * The percentage of long plagiarized fragments (between min and max words, these extremes can also be specified).
 
-The sum of these percentages should be equal to 100. 
-More varied resources are given in input; more the output documents will match the expectations of the user settings.
+The sum of the complementary percentages should be equal to 100 in each case. 
+More various resources are given in input, more the output documents will match the expectations of the user settings.
 
 ### Fragment Obfuscation
 
-Obfuscation is the act of hiding a plagiarism so that it becomes more difficult to detect, in particular by software or detection tools.
+Obfuscation is the act of hiding a plagiarism to make it more difficult to detect, in particular by software or detection tools.
 The builder is able to generate several types of obfuscation, all listed below:
 
-* <i>None (No obfuscation):</i> the text is copied without any change, i.e. it's a strictly copy and paste; 
-* <i>Change of order:</i> the words of the text are randomly shuffled with the risk that the text is no longer syntactically correct;
-* <i>Substitution:</i> some words of the text are replaced by one of their –onym words (e.g. synonyms, hypernyms or antonym). The text is apparently no longer the same as the original, but still retains a similar meaning (not necessarily the same but may be the opposite or complementary sense). The –onym words are extracted from DBNary;
+* <i>None (No obfuscation):</i> the text is copied without any change (i.e. copy and paste); 
+* <i>Order change:</i> the words of the text are randomly shuffled with the risk that the text is no longer syntactically correct;
+* <i>Substitution:</i> some words of the text are replaced by one of their –onym words (e.g. synonyms, hypernyms or antonym). The text is apparently no longer the same as the original, but still retains a similar meaning (not necessarily the same but may be the opposite or complementary sense). The –onym words are extracted from [DBNary](https://github.com/FerreroJeremy/DBNary-PHP-Interface);
 * <i>Addition:</i> some characters or words are randomly inserted between the words of the text;
 * <i>Deletion:</i> some words are randomly removed;
 * <i>Truncation:</i> the last letter of some words is randomly removed.
 
-It is possible to specify the percentage of plagiarized fragments slightly, moderately or heavily obfuscated. 
-The sum of these percentages should be equal to 100. This value is called obfuscation density. It determines the proportion of words in the text that will be affected by the obfuscation.
+It is also possible to specify the percentage of plagiarized fragments slightly, moderately or heavily obfuscated. 
+The sum of these percentages should be equal to 100. 
+These values are called obfuscation densities. 
+They determine the proportion of words in the fragment that will be affected by the obfuscation.
 
 ### Output
 
-Each output document is represented by three files.
-* A plain text file with the extension <i>.txt</i>.
-* A XML file with the extension <i>_meta.xml</i> including only the meta-data about the related plain text file.
+Each output document is represented by three files:
+* A plain text file with the extension <i>.txt</i>;
+* A XML file with the extension <i>_meta.xml</i> including only the meta-data about the related plain text file;
 * A XML file that contains the fragments in their text form as they are in the plain text file but framed by their meta-data as they are in the <i>_meta.xml</i> file.
 
-An output XML files consists of a root markup <i>\<document\></i>, which comprises a list of <i>\<feature\></i> markups, each relating a fragment. 
+An output XML files consists of a root markup <i>\<document\></i>, which comprises a list of <i>\<feature\></i> markups each relating a fragment. 
 The <i>\<document\></i> markup has the following attributes: the percentage of total plagiarism that contains the document, and its lengths in characters and words. 
 Each <i>\<feature\></i> markup contains meta-data relating to a fragment.
 
@@ -90,11 +92,13 @@ The meta-data that are specific to the cross-language context are reported below
 * <i>parallel_src_length:</i> number of characters of the fragment within the parallel file;
 * <i>parallel_src_wordNumber:</i> number of words of the fragment within the parallel file.
 
+These structure and nomenclature are compatible with those adopted by the PAN tasks (http://pan.webis.de/clef15/pan15-web/plagiarism-detection.html).
+
 To evaluate a plagiarism detection tool, you simply must give it the generated plain text file in input and compare its analysis report with the generated <i>_meta.xml</i> file related to the plain text file analyzed.
 
 ## Usage
 
-A sample of the use of the <i>PlagiarizedCorpusBuilder</i> library is in the script <i>test.php</i>.
+A sample of the use of the <i>PlagiarizedCorpusBuilder</i> library can be found in the script <i>test.php</i>.
 
 ## Conception
 <p align="center"><img src="https://raw.githubusercontent.com/FerreroJeremy/Plagiarized-Corpus-Generator/master/docs/PlagiarizedCorpusGenerator.png?token=AL6uBo2o7exZBkeeg_cbouFqCYkIbWQJks5YNCVfwA%3D%3D"></p>
