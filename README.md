@@ -45,19 +45,17 @@ They determine the proportion of words in the fragment that will be affected by 
 
 ## How does it work ?
 
-In a first time, knowing the number of documents to generate and the law of distribution of the lengths of these documents, a number of words is assigned to each document to generate. 
-In a second time, knowing the law of distribution of plagiarism percentages, the number of plagiarized words are calculated and assigned in each document to generate.
-
-Two choices are possible for the third part (the generation of the fragments).
-It is possible to generate the output documents by specifying the number of the fragments or the length of the fragments. 
-* <i>Build by number of fragments:</i>
-Knowing the distribution probability of the number of fragments by document, a number of fragments is assigned to each document to generate (their lengths are set randomly between min and max). 
+In a first time, knowing the number of documents to generate and the distribution of the lengths of these documents, a number of words is assigned to each document to generate. 
+In a second time, knowing the distribution of plagiarism percentages, the number of plagiarized words are calculated and assigned in each document to generate. <br/>
+Then, two choices are possible for the third part of the process (i.e. the generation of the fragments): 
+* <i>Build by number of fragments</i> <br/>
+Knowing the distribution of the number of fragments by document, a number of fragments is assigned to each document to generate (their lengths are set randomly between min and max). 
 Then, the fragments will be labeled plagiarized or original according to their lengths to match the desired number of words plagiarized.
-* <i>Build by size of the fragments:</i>
-Knowing the distribution percentage of sizes (small, medium or large) of the fragments by document, a number of words for each types of plagiarized fragments according to their size is calculated. 
-Then, a number of fragments of each type of size is randomly generated, such that their sum is the calculated value of the previous step.
+* <i>Build by size of the fragments</i> <br/>
+Knowing the distribution of lengths (small, medium or long) of the plagiarized fragments by document, a number of words for each types of plagiarized fragments according to their length is calculated. 
+Then, a number of fragments of each type of length is randomly generated, such that their sum is the calculated value of the previous step.
 
-For each fragment, a contiguous sequence of sentences as close as the number of words intended for the related extraction (i.e. fragment) is extracted from an adequate resource (depending on it should be plagiarized or original).
+Finally, for each fragment, a contiguous sequence of sentences as close as the number of words intended for the related extraction (i.e. fragment) is extracted from an adequate resource (depending on it should be plagiarized or original).
 
 ## Output
 
