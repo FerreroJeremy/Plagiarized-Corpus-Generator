@@ -101,6 +101,6 @@ A sample of the use of the <i>PlagiarizedCorpusBuilder</i> library can be found 
 If you have additional questions, please send it to me by email at jeremy.ferrero@compilatio.net.
 
 ## Conception
-<p align="center"><img src="https://raw.githubusercontent.com/FerreroJeremy/Plagiarized-Corpus-Generator/master/docs/PlagiarizedCorpusGenerator.png?token=AL6uBo2o7exZBkeeg_cbouFqCYkIbWQJks5YNCVfwA%3D%3D"></p>
+<p align="center"><img src="./docs/PlagiarizedCorpusGenerator.png"></p>
 The above diagram was modeled with <a rel="staruml" href="http://staruml.io/">StarUML</a>.
 
