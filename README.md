@@ -43,7 +43,7 @@ The sum of these percentages should be equal to 100.
 These values are called obfuscation densities. 
 They determine the proportion of words in the fragment that will be affected by the obfuscation.
 
-## How does it work ?
+## How does it work?
 
 In a first time, knowing the number of documents to generate and the distribution of the lengths of these documents, a number of words is assigned to each document to generate. 
 In a second time, knowing the distribution of plagiarism percentages, the number of plagiarized words are calculated and assigned in each document to generate. <br/>
